@@ -1,0 +1,28 @@
+delete_sequence([], []).
+delete_sequence([A], [A]).
+delete_sequence([A,B|List], [A|Result]):-
+    A =< B,
+    delete_sequence([B|List], Result).
+delete_sequence([A,B|List], Result):-
+    A > B,
+    delete_sequence_aux([B|List], Result).
+
+%delete_sequence([A,B|List], Result)={[], List = []
+%                              {A U delete_sequence(List-A,Result),A<=B
+%                              {delete_sequence(List-A,Result), A > B
+%delete_sequence([1,2,1,1,6,5,8], Result).
+%
+
+
+
+delete_sequence_aux([_], []).
+delete_sequence_aux([B,C|List], Result):-
+    B =< C,
+    delete_sequence([C|List], Result).
+
+
+%delete_sequence_aux([B,C|List], Result)={[], List=[_]
+%                                        {delete_sequence(List-B,
+%                                        Result), B <= C
+%
+%
