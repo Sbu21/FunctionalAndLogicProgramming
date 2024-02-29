@@ -1,0 +1,15 @@
+(defun sum (array)
+	(cond
+		((null array) 0)
+		((numberp (car array)) (+ (car array) (sum (cdr array))))
+		((listp (car array)) (+ (sum (car array)) (sum (cdr array))))
+		(T (sum (cdr array)))
+	)
+)
+
+(write(sum '(1 2 3 (4 5) (1 2))))
+(write(sum '(9 (2 5) (1 2))))
+
+;sum(array)={0, array=null
+;           {car(array) + sum(cdr(array)), array=number
+;           {sum(car(array)) + sum(cdr(array)), array=list
